@@ -7,10 +7,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 project(
-    UTILS
-    LANGUAGES CXX
-    VERSION 1.0.0
-    HOMEPAGE_URL "https://github.com/Erciaagnus/cpp_project_template"
+   UTILS
+   LANGUAGES CXX
+   VERSION 1.0.0
+   HOMEPAGE_URL "https://github.com/Erciaagnus/cpp_project_template"
 )
 message(STATUS)
 message(STATUS "Started all process in ${PROJECT_NAME} CMakeLists.txt.")
@@ -20,11 +20,11 @@ set(CPP_COMFILE_FLAGS_MSVC /W4 /WX /permissive-)
 set(CPP_COMFILE_FLAGS_OTHERS -Wall -Wpedantic -Wextra -Werror)
 
 if(NOT CPP_COMFILE_FLAGS)
-    if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-        set(CPP_COMFILE_FLAGS ${CPP_COMFILE_FLAGS_MSVC})
-    else()
-        set(CPP_COMFILE_FLAGS ${CPP_COMFILE_FLAGS_OTHERS})
-    endif()
+   if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+      set(CPP_COMFILE_FLAGS ${CPP_COMFILE_FLAGS_MSVC})
+   else()
+      set(CPP_COMFILE_FLAGS ${CPP_COMFILE_FLAGS_OTHERS})
+   endif()
 endif()
 
 # ! Set the path variables
@@ -39,31 +39,31 @@ set(${PROJECT_NAME}_APPLICATION_PATH "${${PROJECT_NAME}_ROOT_PATH}/application")
 set(${PROJECT_NAME}_RESOURCE_PATH "${${PROJECT_NAME}_ROOT_PATH}/resource")
 
 if(NOT PARSED_SYSTEM_INFO)
-    # ! Message for the system information
-    message(STATUS "---------------CMake information---------------")
-    message(STATUS "CMake version: ${CMAKE_VERSION}")
-    message(STATUS "")
+   # ! Message for the system information
+   message(STATUS "---------------CMake information---------------")
+   message(STATUS "CMake version: ${CMAKE_VERSION}")
+   message(STATUS "")
 
-    message(STATUS "---------------System information---------------")
-    message(STATUS "System architecture name: ${CMAKE_SYSTEM_PROCESSOR}")
-    message(STATUS "System os name: ${CMAKE_SYSTEM_NAME}")
-    message(STATUS "System os version: ${CMAKE_SYSTEM_VERSION}")
-    message(STATUS "")
+   message(STATUS "---------------System information---------------")
+   message(STATUS "System architecture name: ${CMAKE_SYSTEM_PROCESSOR}")
+   message(STATUS "System os name: ${CMAKE_SYSTEM_NAME}")
+   message(STATUS "System os version: ${CMAKE_SYSTEM_VERSION}")
+   message(STATUS "")
 
-    message(STATUS "---------------Compiler information---------------")
-    message(STATUS "C++ compiler id: ${CMAKE_CXX_COMPILER_ID}")
-    message(STATUS "C++ compiler version: ${CMAKE_CXX_COMPILER_VERSION}")
-    message(STATUS "C++ Compile options: ${CPP_COMFILE_FLAGS}")
-    message(STATUS "")
+   message(STATUS "---------------Compiler information---------------")
+   message(STATUS "C++ compiler id: ${CMAKE_CXX_COMPILER_ID}")
+   message(STATUS "C++ compiler version: ${CMAKE_CXX_COMPILER_VERSION}")
+   message(STATUS "C++ Compile options: ${CPP_COMFILE_FLAGS}")
+   message(STATUS "")
 
-    message(STATUS "---------------C++ standard information---------------")
-    message(STATUS "C++ Build type: ${CMAKE_BUILD_TYPE}")
-    message(STATUS "C++ standard version: ${CMAKE_CXX_STANDARD}")
-    message(STATUS "C++ standard required: ${CMAKE_CXX_STANDARD_REQUIRED}")
-    message(STATUS "C++ extensions: ${CMAKE_CXX_EXTENSIONS}")
-    message(STATUS "")
+   message(STATUS "---------------C++ standard information---------------")
+   message(STATUS "C++ Build type: ${CMAKE_BUILD_TYPE}")
+   message(STATUS "C++ standard version: ${CMAKE_CXX_STANDARD}")
+   message(STATUS "C++ standard required: ${CMAKE_CXX_STANDARD_REQUIRED}")
+   message(STATUS "C++ extensions: ${CMAKE_CXX_EXTENSIONS}")
+   message(STATUS "")
 
-    set(PARSED_SYSTEM_INFO TRUE)
+   set(PARSED_SYSTEM_INFO TRUE)
 endif()
 
 # ! Message for the project information
@@ -97,13 +97,13 @@ message(STATUS "")
 
 # ! Add source files here
 set(${PROJECT_NAME}_SOURCE_FILES
-    src/utils.cpp
+   src/utils.cpp
 )
 
 # ! If you want to make a library, use the following code
 # 정적 또는 공유 라이브러리(target)를 만들 때 사용
 add_library(${PROJECT_NAME} STATIC
-${${PROJECT_NAME}_SOURCE_FILES}
+   ${${PROJECT_NAME}_SOURCE_FILES}
 )
 
 # ! If you want to make an executable, use the following code
@@ -114,7 +114,7 @@ ${${PROJECT_NAME}_SOURCE_FILES}
 
 # ! If you want to add include directories and link libraries, use the following code
 target_include_directories(${PROJECT_NAME} PUBLIC
-${${PROJECT_NAME}_INCLUDE_PATH}
+   ${${PROJECT_NAME}_INCLUDE_PATH}
 )
 
 # ! Add include path here
@@ -128,12 +128,11 @@ ${${PROJECT_NAME}_INCLUDE_PATH}
 # 빌드 프로세스에서 특정 대상을 빌드하기 전에 다른 대상이 먼저 빌드되어야 함
 # ! Add dependencies here
 # )
-
 target_compile_options(${PROJECT_NAME} PRIVATE
-${CPP_COMFILE_FLAGS}
+   ${CPP_COMFILE_FLAGS}
 )
-# include(cmake/create_documents.cmake)
 
+# include(cmake/create_documents.cmake)
 message(STATUS)
 message(STATUS "Finished all process in ${PROJECT_NAME} CMakeLists.txt.")
 message(STATUS)

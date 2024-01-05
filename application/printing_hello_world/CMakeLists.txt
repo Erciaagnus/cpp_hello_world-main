@@ -103,41 +103,43 @@ set(${PROJECT_NAME}_SOURCE_FILES
 
 # ! If you want to make a library, use the following code
 # 정적 또는 공유 라이브러리(target)를 만들 때 사용
-#add_library(${PROJECT_NAME} STATIC
-#${${PROJECT_NAME}_SOURCE_FILES}
-#)
+# add_library(${PROJECT_NAME} STATIC
+# ${${PROJECT_NAME}_SOURCE_FILES}
+# )
 
 # ! If you want to make an executable, use the following code
 # 실행 파일(target)을 만들 때 사용
- add_executable(${PROJECT_NAME}
- ${${PROJECT_NAME}_SOURCE_FILES}
- )
+add_executable(${PROJECT_NAME}
+    ${${PROJECT_NAME}_SOURCE_FILES}
+)
 
 # ! If you want to add include directories and link libraries, use the following code
 target_include_directories(${PROJECT_NAME} PUBLIC
-${${PROJECT_NAME}_INCLUDE_PATH}
+    ${${PROJECT_NAME}_INCLUDE_PATH}
 
-
-# ! Add include path here
+    # ! Add include path here
 )
-#외부 라이브러리 삽입할 거라
+
+# 외부 라이브러리 삽입할 거라
 target_link_libraries(${PROJECT_NAME} PRIVATE
- UTILS
-# ! Add libraries here
+    UTILS
+
+    # ! Add libraries here
 )
 
-#해당 라이브러리 전에 이것부터 빌드가 되어야 한다는 것(UTILS)
+# 해당 라이브러리 전에 이것부터 빌드가 되어야 한다는 것(UTILS)
 add_dependencies(${PROJECT_NAME}
- UTILS
-# 빌드 프로세스에서 특정 대상을 빌드하기 전에 다른 대상이 먼저 빌드되어야 함
-# ! Add dependencies here
+    UTILS
+
+    # 빌드 프로세스에서 특정 대상을 빌드하기 전에 다른 대상이 먼저 빌드되어야 함
+    # ! Add dependencies here
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE
-${CPP_COMFILE_FLAGS}
+    ${CPP_COMFILE_FLAGS}
 )
-# include(cmake/create_documents.cmake)
 
+# include(cmake/create_documents.cmake)
 message(STATUS)
 message(STATUS "Finished all process in ${PROJECT_NAME} CMakeLists.txt.")
 message(STATUS)
